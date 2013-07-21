@@ -6,11 +6,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<title>小宇和包包的北京生活</title>
 		<meta name="description" content="小宇和包包的北京生活" />
-
+		<!-- modal -->
+		<link rel="stylesheet" type="text/css" href="css/default3.css" />
+		<link rel="stylesheet" type="text/css" href="css/component3.css" />
+		<!-- diary -->
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
 		<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo4.css" />
-		<script src="js/modernizr.custom.js"></script>
+		<!-- picroll -->
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom2.css" />
+		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+
 	</head>
 	<body>
 		<div class="container">
@@ -52,11 +59,60 @@
 						<div class="bb-custom-side">
 							<p><a href="#">天台爱情</a><br/>难得周末，<a href="http://weibo.com/bingwenshi">阿炳</a>来小宇公司玩，晚上加上阿炳同学，四个人去中关村的美嘉(Mega,这名字对程序员很熟悉啊)影院看了杰伦的天台爱情。天台里果然有很多很多元素，我很满意，也很惊喜，哈哈。</p>
 						</div>
-						<div class="bb-custom-side">
-							<p><a href="#">本周菜单</a><br/>这是我周二到周五拍的午餐伙食，以后坚持每周post一次，图片展示方式还没想好，先留白在这吧~</p></a>
+						<div class="bb-custom-side" id="2013-7-20">
+							<p><a href="#">本周菜单</a><br/>这是我周二到周五拍的午餐伙食，以后坚持每周post一次~
+							<br /><button class="md-trigger" data-modal="modal-13-7-20">图片浏览</button></p></a>
+							
 						</div>
 					</div>
 				</div>
+				
+				<!-- 图片区 -->
+				<div class="main clearfix">
+					<div class="column">
+						<div class="md-modal md-effect-2" id="modal-13-7-20">
+							<div class="md-content">
+								<h3 class="md-close">关闭图片</h3>
+							</div>
+							
+							<ul id="sb-slider" class="sb-slider">
+					<li>
+						<a href="#"><img src="images/13-7-20-1.jpg" alt="13-7-20-1"/></a>
+						<div class="sb-description">
+							<h3>周二午饭</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#"><img src="images/13-7-20-2.jpg" alt="13-7-20-2"/></a>
+						<div class="sb-description">
+							<h3>周三午饭</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#"><img src="images/13-7-20-3.jpg" alt="13-7-20-3"/></a>
+						<div class="sb-description">
+							<h3>周四午饭</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#"><img src="images/13-7-20-4.jpg" alt="13-7-20-4"/></a>
+						<div class="sb-description">
+							<h3>周五午饭</h3>
+						</div>
+					</li>
+				</ul>
+
+				<div id="shadow" class="shadow"></div>
+				<div id="nav-arrows" class="nav-arrows">
+					<a href="#">Next</a>
+					<a href="#">Previous</a>
+				</div>
+						
+						</div>
+					</div>
+				</div>
+				
+				
 
 				<nav>
 					<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
@@ -69,9 +125,59 @@
 
 		</div><!-- /container -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slicebox.js"></script>
+
 		<script src="js/jquerypp.custom.js"></script>
 		<script src="js/jquery.bookblock.js"></script>
 		<script>
+			var polyfilter_scriptpath = '/js/';
+var Page2 = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+								$navArrows.show();
+								$shadow.show();
+
+							},
+							orientation : 'r',
+							cuboidsRandom : true,
+							disperseFactor : 30
+						} ),
+						
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+								
+								slicebox.previous();
+								return false;
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				
+
+
 			var Page = (function() {
 				
 				var config = {
@@ -153,6 +259,12 @@
 		</script>
 		<script>
 				Page.init();
+				Page2.init();
 		</script>
+
+		<script src="js/classie.js"></script>
+		<script src="js/modalEffects.js"></script>
+		<script src="js/cssParser.js"></script>
+		<script src="js/css-filters-polyfill.js"></script>
 	</body>
 </html>
